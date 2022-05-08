@@ -16,11 +16,14 @@ public class Person {
     public Person(String name, String surname, int age) {
         this.name = name;
         this.surname = surname;
+        this.age = age;
     }
 
     public Person(String name, String surname, int age, String address) {
         this.name = name;
         this.surname = surname;
+        this.age = age;
+        this.address = address;
     }
 
     public boolean hasAge() {
@@ -65,13 +68,27 @@ public class Person {
 
     @Override
     public String toString() {
-        return "Person{" +
-                "name='" + getName() + '\'' +
-                ", surname='" + getSurname() + '\'' +
-                ", age=" + getAge() +
-                ", address=" + getAddress() +
-                '}';
+        if (hasAge() && hasAddress()) {
+            return "Person{" +
+                    "name='" + getName() + '\'' +
+                    ", surname='" + getSurname() + '\'' +
+                    ", age=" + getAge() +
+                    ", address=" + getAddress() +
+                    '}';
+        } else if (hasAge()) {
+            return "Person{" +
+                    "name='" + getName() + '\'' +
+                    ", surname='" + getSurname() + '\'' +
+                    ", age=" + getAge() +
+                    '}';
+        } else {
+            return "Person{" +
+                    "name='" + getName() + '\'' +
+                    ", surname='" + getSurname() + '\'' +
+                    '}';
+        }
     }
+
 
     @Override
     public int hashCode() {
@@ -80,5 +97,8 @@ public class Person {
 
 
     public PersonBuilder newChildBuilder() {
+        PersonBuilder child = new PersonBuilder()
+                .setSurname(this.surname);
+        return child;
     }
 }
