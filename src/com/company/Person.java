@@ -59,7 +59,7 @@ public class Person {
     }
 
     public void setAddress(String address) {
-        this.address = address;
+        this.address = "Неизвестен";
     }
 
     public void happyBirthday() {

@@ -18,14 +18,14 @@ public class Main {
             // Не хватает обяхательных полей
             new PersonBuilder().build();
         } catch (IllegalStateException e) {
-            e.printStackTrace();
+            System.out.println("Недостаточно данных");
         }
 
         try {
             // Возраст недопустимый
             new PersonBuilder().setAge(-100).build();
         } catch (IllegalArgumentException e) {
-            e.printStackTrace();
+            System.out.println("Отрицательное число");
         }
     }
 }
